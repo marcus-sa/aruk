@@ -1,0 +1,1 @@
+export UIKitComponent from './UIKitComponent'
