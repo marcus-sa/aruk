@@ -1,1 +1,1 @@
-export UIKitComponent from './UIKitComponent'
+export { UIKit } from './UIKit'

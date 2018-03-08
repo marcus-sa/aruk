@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Awesome React UIKit</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="React inspired minimalistic web framework">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/docsify/lib/themes/vue.css">
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    var jsResources = [
+      'https://unpkg.com/react-dom@16.2.0/umd/react-dom.development.js',
+      'https://unpkg.com/react@16.2.0/umd/react.development.js',
+      'https://unpkg.com/uikit@3.0.0-beta.40/dist/js/uikit.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit-icons.min.js'
+    ].map(function (url) {
+      return '<script src="' + url + '"></script>';
+    }).join('\n')
+
+    var cssResources = '@import url("https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/css/uikit.min.css");';
+
+    window.$docsify = {
+      name: 'Awesome React UIKit',
+      repo: 'https://github.com/marcus-sa/aruk',
+      coverpage: true,
+      loadSidebar: true,
+      subMaxLevel: 4,
+      search: 'auto',
+      auto2top: true,
+      homepage: 'https://raw.githubusercontent.com/marcus-sa/aruk/master/README.md',
+      plugins: [
+        DemoBoxReact.create(jsResources, cssResources)
+      ]
+    }
+  </script>
+  <script src="https://unpkg.com/docsify-demo-box-react@1.0.3/dist/docsify-demo-box-react.min.js"></script>
+  <script src="https://unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-typescript.min.js"></script>
+</body>
+</html>

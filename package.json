@@ -1,0 +1,50 @@
+{
+  "name": "aruk",
+  "version": "0.0.1",
+  "description": "🌠 Awesome React UIKit | https://getuikit.com for React & TypeScript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "src": "src"
+  },
+  "scripts": {
+    "compile": "webpack",
+    "watch": "webpack-dev-server",
+    "docs": "docsify serve ./docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcus-sa/aruk.git"
+  },
+  "author": "Marcus S. Abildskov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcus-sa/aruk/issues"
+  },
+  "homepage": "https://github.com/marcus-sa/aruk#readme",
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.0.0-0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "docsify-cli": "^4.2.0",
+    "source-map-loader": "^0.2.3",
+    "typescript": "^2.7.2",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.10",
+    "webpack-dev-server": "^3.1.0",
+    "@types/classnames": "^2.2.3",
+    "@types/lodash": "^4.14.104",
+    "@types/react": "^16.0.34",
+    "@types/react-dom": "^16.0.3",
+    "@types/uikit": "^2.27.6"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "lodash": "^4.17.5",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "uikit": "^3.0.0-beta.40"
+  }
+}

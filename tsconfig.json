@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "target": "es5",
+    "removeComments": true,
+    "declaration": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "strict": true,
+    "strictNullChecks": false
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "lib/**/*",
+    "src/**/*"
+  ]
+}

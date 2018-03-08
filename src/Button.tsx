@@ -1,25 +1,23 @@
 import * as React from 'react'
 import classNames from 'classnames'
 
-import { PropTypes } from './lib/types'
+import { UIKit } from '../lib/UIKit'
 
-export interface ButtonProps extends React.Props<Button> implements PropTypes {
-  children?: JSX.Element | string
+import { Align, Spinner } from './index'
+
+export interface ButtonProps extends UIKit.Props<Button> {
   active?: boolean
-  className?: string
-  danger?: boolean
   large?: boolean
   link?: boolean
-  primary?: boolean
-  secondary?: boolean
+  loading?: boolean
   small?: boolean
   text?: boolean
   disabled?: boolean
 }
 
-export default class Button extends React.Component<ButtonProps> {
+export class Button extends React.Component<ButtonProps> {
 
-  public render(): JSX.Element {
+  public render() {
     const {
       children,
       active,
@@ -31,6 +29,8 @@ export default class Button extends React.Component<ButtonProps> {
       secondary,
       small,
       text,
+      loading,
+      disabled,
       ...rest
     } = this.props
 
@@ -47,9 +47,13 @@ export default class Button extends React.Component<ButtonProps> {
     })
 
     return (
-      <button {...rest} className={className}>
-        {children}
-      </button>
+      <UIKit.Compose as={link ? 'a' : 'button'} {...rest} className={className} disabled={loading || disabled}>
+        {loading ? (
+          <Align.Center>
+            <Spinner />
+          </Align.Center>
+        ) : children}
+      </UIKit.Compose>
     )
   }
 
