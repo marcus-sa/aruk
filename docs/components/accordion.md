@@ -46,16 +46,20 @@ const { Accordion } = aruk
 
 export default class Application extends React.Component {
 
-  hooks(component) {
-    setTimeout(() => component.$destroy(true), 2000)
+  state = {
+    itemActive: 'item-1'
   }
 
+  toggle = (key) => this.setState({ itemActive: key })
+
   render() {
+    const { itemActive } = this.state
+
     return (
       <Accordion
-        onBeforeShow={console.log}
-        afterMount={this.hooks}
-        collapsible
+        active="item-1"
+        collapsible={false}
+        multiple
         content={[
           {
             key: 'item-1',
@@ -64,7 +68,6 @@ export default class Application extends React.Component {
           },
           {
             key: 'item-2',
-            active: true,
             title: 'Item 2',
             content: 'Nam volutpat dapibus quam ac tincidunt. Nullam mollis, quam et.',
           },

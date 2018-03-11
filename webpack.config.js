@@ -15,16 +15,10 @@ module.exports = {
   entry: path.join(appSrc, 'index.ts'),
   devtool: 'inline-source-map',
   output: {
-    filename: 'index.js',
-    libraryTarget: 'umd',
+    filename: 'aruk.js',
+    //libraryTarget: 'umd',
     library: 'aruk',
     path: appDist
-  },
-
-  devServer: {
-    port: 3030,
-    historyApiFallback: true,
-    inline: true
   },
 
   resolve: {
@@ -58,9 +52,9 @@ module.exports = {
   // assume a corresponding global variable exists and use that instead.
   // This is important because it allows us to avoid bundling all of our
   // dependencies, which allows browsers to cache those libraries between builds.
-  externals: {
+  /*externals: {
     "react": 'React',
     "react-dom": 'ReactDOM',
-    //"uikit": 'UIkit'
-  }
+    "_": 'lodash'
+  }*/
 }

@@ -3,15 +3,29 @@ import classNames from 'classnames'
 
 import { UIKit } from '../lib/UIKit'
 
+export interface AlertState {
+  active: boolean
+}
+
 export interface AlertProps extends UIKit.Props<Alert> {
   close?: boolean
+  active?: boolean
 
   animation?: boolean
   duration?: number
   selClose?: string
 }
 
-export class Alert extends UIKit.Component<AlertProps> {
+export class Alert extends UIKit.Component<AlertProps, AlertState> {
+
+  public state: AlertState = {
+    active: this.props.active
+  }
+
+  public static defaultProps: object = {
+    as: 'div',
+    active: true
+  }
 
   public type: string = 'alert'
 
@@ -23,12 +37,30 @@ export class Alert extends UIKit.Component<AlertProps> {
   public options: string[] = [
     'animation',
     'duration',
-    'sel-close'
+    'selClose'
   ]
+
+  private _close = (e: React.SyntheticEvent<HTMLElement>): boolean => {
+    this.pushEvent('onBeforeHide', e)
+    this.setState({ active: false })
+    this.pushEvent('onHide', e)
+
+    return false
+  }
+
+  public componentWillReceiveProps({ active }: AlertProps) {
+    if (this.state.active !== active) {
+      this.setState({ active })
+    }
+  }
+
+  public static Close({ onClick }: UIKit.Events): JSX.Element {
+    return <a href="#" onClick={onClick} className="uk-alert-close" uk-close="true" />
+  }
 
   public render() {
     const {
-      as,
+      as: element,
       children,
       close,
       primary,
@@ -39,19 +71,19 @@ export class Alert extends UIKit.Component<AlertProps> {
       ...rest
     } = this.props
 
-    const styleNames = classNames(className, {
+    const styleNames: string = classNames(className, {
       'uk-alert-primary': primary,
       'uk-alert-success': success,
       'uk-alert-warning': warning,
       'uk-alert-danger': danger
     })
 
-    return (
-      <UIKit.Compose as={as || 'div'} uk-alert="true" {...rest} className={styleNames}>
-        {close && <span className="uk-alert-close" uk-close="true" />}
+    return this.state.active ? (
+      <UIKit.Compose as={element} uk-alert="true" {...rest} className={styleNames}>
+        {close && <Alert.Close onClick={this._close} />}
         {children}
       </UIKit.Compose>
-    )
+    ) : null
   }
 
 }

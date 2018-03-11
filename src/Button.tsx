@@ -21,7 +21,7 @@ export class Button extends React.Component<ButtonProps> {
     const {
       children,
       active,
-      className: customClassName,
+      className,
       danger,
       large,
       link,
@@ -34,7 +34,7 @@ export class Button extends React.Component<ButtonProps> {
       ...rest
     } = this.props
 
-    const className = classNames('uk-button', customClassName, {
+    const styleNames = classNames('uk-button', className, {
       'uk-button-default': !primary && !secondary && !danger && !text && !link,
       'uk-button-primary': primary,
       'uk-button-secondary': secondary,
@@ -47,7 +47,7 @@ export class Button extends React.Component<ButtonProps> {
     })
 
     return (
-      <UIKit.Compose as={link ? 'a' : 'button'} {...rest} className={className} disabled={loading || disabled}>
+      <UIKit.Compose as={link ? 'a' : 'button'} {...rest} className={styleNames} disabled={loading || disabled}>
         {loading ? (
           <Align.Center>
             <Spinner />
